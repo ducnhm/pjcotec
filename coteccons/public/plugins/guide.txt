@@ -1,0 +1,35 @@
+B1 : Download CKfinder : https://cksource.com/ckfinder/download
+B2 : Donwnload ckeditor : http://ckeditor.com/download
+B3 : Nhúng link vào th? head 
+<script src="{{ asset('public/plugins/ckeditor/ckeditor.js') }}"></script>
+B4 : chèn scrip du?i textarea c?n dùng
+<script type="text/javascript">
+										var editor = CKEDITOR.replace('desc',{
+											language:'vi',
+											filebrowserImageBrowseUrl : '../../public/plugins/ckfinder/ckfinder.html?Type=Images',
+											filebrowserFlashBrowseUrl : '../../public/plugins/ckfinder/ckfinder.html?Type=Flash',
+											filebrowserImageUploadUrl : '../../public/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+											filebrowserFlashUploadUrl : '../../public/plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
+
+
+										});
+									</script>
+B5
+Ckfinder -> config :
+
+$config['authentication'] = function () {
+    return true;
+};
+
+B6 : t?o folder upload hình ?nh 
+B7 : vào file Ckfinder -> config change Url:
+$config['backends'][] = array(
+    'name'         => 'default',
+    'adapter'      => 'local',
+    'baseUrl'      => 'http://localhost/myproject/coteccons/public/upload/upload/',
+//  'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
+    'chmodFiles'   => 0777,
+    'chmodFolders' => 0755,
+    'filesystemEncoding' => 'UTF-8',
+);
+
